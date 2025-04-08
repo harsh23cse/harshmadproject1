@@ -8,19 +8,22 @@
     <EditText
         android:id="@+id/inputValue"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_enter_value"
-        android:inputType="numberDecimal" />
+        android:layout_height="56dp"
+        android:hint="Enter value to be converted"
+        android:inputType="numberDecimal"
+        android:padding="12dp" />
 
     <Spinner
         android:id="@+id/fromSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="56dp"
+        android:padding="12dp" />
 
     <Spinner
         android:id="@+id/toSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="56dp"
+        android:padding="12dp" />
 
     <Button
         android:id="@+id/convertButton"
@@ -36,5 +39,6 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginTop="20dp"
+        android:textColor="@android:color/black"
         android:text="Result will be shown here" />
 </LinearLayout>

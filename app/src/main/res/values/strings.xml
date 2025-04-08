@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">harshmadproject1</string>
+    <string name="app_name">Unit Converter</string>
+    <string name="hint_enter_value">Enter value</string>
+    <string name="convert">Convert</string>
 </resources>

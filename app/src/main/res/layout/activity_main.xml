@@ -1,44 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+
     android:orientation="vertical"
-    android:padding="20dp">
 
-    <EditText
-        android:id="@+id/inputValue"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:hint="Enter value to be converted"
-        android:inputType="numberDecimal"
-        android:padding="12dp" />
+    android:padding="16dp"
 
-    <Spinner
-        android:id="@+id/fromSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:padding="12dp" />
+    android:background="@android:color/white"
 
-    <Spinner
-        android:id="@+id/toSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:padding="12dp" />
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/convertButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/convert"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp" />
+
+
+    <!-- App Heading: UNIT CONVERTER APPLICATION -->
 
     <TextView
-        android:id="@+id/resultText"
-        android:layout_width="match_parent"
+
+        android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"
-        android:textColor="@android:color/black"
-        android:text="Result will be shown here" />
+
+        android:text="Unit converter App"
+
+        android:textSize="24sp"
+
+        android:textStyle="bold"
+
+        android:textColor="#000000"
+
+        android:layout_gravity="center_horizontal"
+
+        android:layout_marginBottom="30dp"
+
+        android:layout_marginTop="130dp" />
+
+
+
+    <!-- Row 1: Input Value Field and From Unit Dropdown -->
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+
+        android:layout_marginBottom="20dp">
+
+
+
+        <!-- Input Field to Enter Value -->
+
+        <EditText
+
+            android:id="@+id/inputValue"
+
+            android:layout_width="0dp"
+
+            android:layout_weight="1"
+
+            android:layout_height="wrap_content"
+
+            android:hint="Enter value"
+
+            android:inputType="numberDecimal" />
+
+
+
+        <!-- Spinner to Select From Unit -->
+
+        <Spinner
+
+            android:id="@+id/fromUnitSpinner"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+
+
+    <!-- Row 2: Result Display and To Unit Dropdown -->
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+
+        android:layout_marginBottom="30dp">
+
+
+
+        <!-- TextView to Show Result -->
+
+        <TextView
+
+            android:id="@+id/resultText"
+
+            android:layout_width="0dp"
+
+            android:layout_weight="1"
+
+            android:layout_height="wrap_content"
+
+            android:text="Result : "
+
+            android:textSize="20sp"
+
+            android:textColor="#000000" />
+
+
+
+        <!-- Spinner to Select To Unit -->
+
+        <Spinner
+
+            android:id="@+id/toUnitSpinner"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+
+
+    <!-- Convert Button to Perform Unit Conversion -->
+
+    <Button
+
+        android:id="@+id/convertButton"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:text="Convert"
+
+        android:textSize="20sp"
+
+        android:textAllCaps="false"
+
+        android:backgroundTint="#0000ff"
+
+        android:textColor="#ffffff" />
+
+
+
 </LinearLayout>
+
+

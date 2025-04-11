@@ -1,83 +1,170 @@
 package com.example.harshmadproject1;
+
 import android.os.Bundle;
+
 import android.view.View;
+
 import android.widget.*;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.harshmadproject1.R;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText inputValue;
-    Spinner fromSpinner, toSpinner;
-    Button convertButton;
-    TextView resultText;
 
-    String[] units = {"Feet", "Inches", "Centimeters", "Meters", "Yards"};
+
+// Declare UI Components
+
+    EditText inputValue;           // For entering the value to convert
+
+    Spinner fromUnitSpinner;       // Dropdown for selecting source unit
+
+    Spinner toUnitSpinner;         // Dropdown for selecting target unit
+
+    Button convertButton;          // Button to perform conversion
+
+    TextView resultText;           // To display the result
+
+    String[] units = {"Metre", "Centimetre", "Inch", "Foot", "Yard"};
+
+
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
+// Linking UI components with their IDs from XML
+
         inputValue = findViewById(R.id.inputValue);
-        fromSpinner = findViewById(R.id.fromSpinner);
-        toSpinner = findViewById(R.id.toSpinner);
+
+        fromUnitSpinner = findViewById(R.id.fromUnitSpinner);
+
+        toUnitSpinner = findViewById(R.id.toUnitSpinner);
+
         convertButton = findViewById(R.id.convertButton);
+
         resultText = findViewById(R.id.resultText);
 
+// Creating Adapter for spinners using units array
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, units);
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        fromSpinner.setAdapter(adapter);
-        toSpinner.setAdapter(adapter);
+        fromUnitSpinner.setAdapter(adapter);
+
+        toUnitSpinner.setAdapter(adapter);
+
+// Perform conversion when Convert button is clicked
 
         convertButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
+
             public void onClick(View v) {
+
                 convert();
+
             }
+
         });
+
     }
+
+/*
+
+     Method to convert the entered value from one unit to another
+
+     */
 
     private void convert() {
-        String input = inputValue.getText().toString();
-        if (input.isEmpty()) {
-            resultText.setText("Please enter a value");
+
+        String inputStr = inputValue.getText().toString().trim();
+
+// Check if input is empty
+
+        if (inputStr.isEmpty()) {
+
+            resultText.setText("Please enter a value.");
+
             return;
+
         }
 
-        double value = Double.parseDouble(input);
-        String fromUnit = fromSpinner.getSelectedItem().toString();
-        String toUnit = toSpinner.getSelectedItem().toString();
 
-        double result = convertLength(value, fromUnit, toUnit);
-        resultText.setText(String.format("%.4f %s", result, toUnit));
+
+        double input = Double.parseDouble(inputStr);
+
+        String fromUnit = fromUnitSpinner.getSelectedItem().toString();
+
+        String toUnit = toUnitSpinner.getSelectedItem().toString();
+
+
+
+        double metreValue = toMetres(input, fromUnit);
+
+        double result = fromMetres(metreValue, toUnit);
+
+// Display final result with 4 decimal places
+
+        resultText.setText("Result : " + String.format("%.4f", result) + " " + toUnit);
+
     }
 
-    private double convertLength(double value, String from, String to) {
-        double meters = toMeters(value, from);
-        return fromMeters(meters, to);
-    }
 
-    private double toMeters(double value, String from) {
-        switch (from) {
-            case "Feet": return value * 0.3048;
-            case "Inches": return value * 0.0254;
-            case "Centimeters": return value * 0.01;
-            case "Meters": return value;
-            case "Yards": return value * 0.9144;
+
+    private double toMetres(double value, String unit) {
+
+        switch (unit) {
+
+            case "Centimetre": return value / 100;
+
+            case "Inch": return value * 0.0254;
+
+            case "Foot": return value * 0.3048;
+
+            case "Yard": return value * 0.9144;
+
+            case "Metre":
+
+            default: return value;
+
         }
-        return value;
+
     }
 
-    private double fromMeters(double value, String to) {
-        switch (to) {
-            case "Feet": return value / 0.3048;
-            case "Inches": return value / 0.0254;
-            case "Centimeters": return value / 0.01;
-            case "Meters": return value;
-            case "Yards": return value / 0.9144;
+
+
+    private double fromMetres(double value, String unit) {
+
+        switch (unit) {
+
+            case "Centimetre": return value * 100;
+
+            case "Inch": return value / 0.0254;
+
+            case "Foot": return value / 0.3048;
+
+            case "Yard": return value / 0.9144;
+
+            case "Metre":
+
+            default: return value;
+
         }
-        return value;
+
     }
+
 }
-}
+
+
+
+
+

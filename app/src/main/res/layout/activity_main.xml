@@ -17,7 +17,6 @@
     tools:context=".MainActivity">
 
 
-
     <!-- App Heading: UNIT CONVERTER APPLICATION -->
 
     <TextView
@@ -54,8 +53,6 @@
 
         android:layout_marginBottom="20dp">
 
-
-
         <!-- Input Field to Enter Value -->
 
         <EditText
@@ -71,9 +68,6 @@
             android:hint="Enter value"
 
             android:inputType="numberDecimal" />
-
-
-
         <!-- Spinner to Select From Unit -->
 
         <Spinner
@@ -122,8 +116,6 @@
 
             android:textColor="#000000" />
 
-
-
         <!-- Spinner to Select To Unit -->
 
         <Spinner
@@ -137,13 +129,8 @@
             android:layout_marginStart="8dp" />
 
     </LinearLayout>
-
-
-
     <!-- Convert Button to Perform Unit Conversion -->
-
     <Button
-
         android:id="@+id/convertButton"
 
         android:layout_width="match_parent"
@@ -160,8 +147,15 @@
 
         android:textColor="#ffffff" />
 
-
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SETTINGS"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#808080"
+        android:textColor="#ffffff" />
 
 </LinearLayout>
-
-
